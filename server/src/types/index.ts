@@ -1,0 +1,64 @@
+export type RawEventType = {
+  id: string;
+
+  fields: {
+    allow_refund: 'True' | 'False';
+    category_ids: string[];
+    content_id: string;
+    content_ids: string[];
+    date: string;
+    description: string;
+    feature_image: string;
+    genre: string[];
+    has_web_sales_dates: '0' | '1';
+    is_retired: '0' | '1';
+    is_sold_out: '0' | '1';
+    is_ticket_exchange_enabled: '0' | '1';
+    keywords: string;
+    large_image: string;
+    offsale_date: string;
+    onsale_date: string;
+    product_id: string;
+    product_types: string[];
+    publishing_level: string;
+    purchase: string;
+    region_code: string;
+    seller_info_datetime: string;
+    show_id: string;
+    thumbnail: string;
+    title: string;
+    use_when_dates: 'True' | 'False';
+    venue_address: string;
+    venue_code: string;
+    venue_location: string;
+    venue_name: string;
+    venue_postcode: string;
+    venue_state: string;
+    venue_timezone: string;
+    when: string;
+  };
+};
+
+export type FormattedEventType = {
+  id: string;
+  canEventBeSold: boolean;
+  hospitalityPackage: boolean;
+  contentIds: string[];
+  contentId: string;
+  categoryIds: string[];
+  showId: string;
+  date: string;
+  monthAndYear: string;
+  description: string;
+  featureImage: string;
+  genre: string[];
+  isRetired: boolean;
+  isSoldOut: boolean;
+  keywords: string;
+  offsaleDate: string;
+  onsaleDate: string;
+  purchase: string;
+  thumbnail: string;
+  title: string;
+  when: string;
+};

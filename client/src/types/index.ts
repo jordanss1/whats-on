@@ -1,0 +1,23 @@
+export type EventType = {
+  id: string;
+  hospitalityPackage: boolean;
+  canEventBeSold: boolean;
+  contentIds: string[];
+  contentId: string;
+  categoryIds: string[];
+  date: string;
+  dates: Date[];
+  monthAndYear: string;
+  description: string;
+  featureImage: string;
+  genre: string[];
+  isRetired: boolean;
+  isSoldOut: boolean;
+  keywords: string;
+  offsaleDate: string;
+  onsaleDate: string;
+  purchase: string;
+  thumbnail: string;
+  title: string;
+  when: string;
+};

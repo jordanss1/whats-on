@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+body {
+  min-height: 100vh;
+  font-feature-settings: 'kern', 'liga', 'calt';
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
