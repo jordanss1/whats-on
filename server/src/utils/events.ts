@@ -180,10 +180,6 @@ export function groupEventsById(
       return event;
     });
 
-  uniqueBuckets.forEach(({ hospitalityPackage }) =>
-    console.log({ hospitalityPackage })
-  );
-
   return uniqueBuckets;
 }
 

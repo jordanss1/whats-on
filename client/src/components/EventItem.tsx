@@ -20,21 +20,23 @@ const EventItem: React.FC<EventItemProps> = ({
 }: EventItemProps) => {
   return (
     <Link className="rounded-md cursor-pointer" to={purchase}>
-      <article className="flex rounded-md gap-5">
+      <article className="flex lg:flex-row flex-col rounded-md lg:pb-0 pb-8 lg:gap-5">
         <ImgWithFallback
           src={featureImage}
-          className="max-w-xs w-full rounded-l-sm object-cover h-44"
+          className="lg:max-w-xs min-h-44 w-full lg:rounded-r-none rounded-tl-sm rounded-tr-sm lg:rounded-l-sm object-cover h-full max-h-80 lg:max-h-none lg:h-44"
         />
-        <div className="flex flex-col justify-center gap-5 p-1">
+        <div className="flex flex-col rounded-sm justify-center gap-6 lg:gap-5 px-6 py-4 lg:px-1 lg:py-1">
           <div
             className={`flex flex-col ${
               darkMode ? 'text-white' : 'text-[#243048]'
             }`}
           >
-            <h2 className="uppercase text-[26px] font-[900] font-inter">
+            <h2 className="uppercase text-[26px] font-[900] -mb-1 font-inter">
               {title}
             </h2>
-            <p className="pl-0.5 text-[16px] font-normal font-inter">{date}</p>
+            <p className="pl-0.5 text-[16px] font-bold lg:font-normal font-inter">
+              {date}
+            </p>
           </div>
           <button
             className={`uppercase cursor-pointer ${

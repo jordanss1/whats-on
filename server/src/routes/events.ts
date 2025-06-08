@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import checkApiKey from '../middleware/checkApiKey';
+import logRequest from '../middleware/logRequest';
 import sanitizeQuery, {
   AllowedParamKey,
   allowedParamKeys,
@@ -7,11 +8,12 @@ import sanitizeQuery, {
 import { FormattedEventType, RawEventType } from '../types';
 import { eventsApi } from '../utils/axios';
 import getOrSetCache from '../utils/cache';
+import handleError from '../utils/error';
 import formatEvents from '../utils/events';
 
 const eventRouter = Router();
 
-eventRouter.get('/', checkApiKey, sanitizeQuery, getEvents);
+eventRouter.get('/', checkApiKey, sanitizeQuery, logRequest, getEvents);
 
 async function getEvents(req: Request, res: Response) {
   let cacheName = 'events';
@@ -23,7 +25,7 @@ async function getEvents(req: Request, res: Response) {
       key = allowedKey;
       value = req[allowedKey];
 
-      cacheName += `?${allowedKey}=${req[allowedKey]}`;
+      cacheName += `?${allowedKey}=${encodeURIComponent(req[allowedKey])}`;
     }
   });
 
@@ -72,9 +74,9 @@ async function getEvents(req: Request, res: Response) {
       }
     );
 
-    res.json(events);
+    res.status(200).json(events);
   } catch (err) {
-    console.error('Error fetching events ' + err);
+    handleError(err, res);
   }
 }
 

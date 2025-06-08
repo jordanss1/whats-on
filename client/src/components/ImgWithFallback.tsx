@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import fallbackImg from '../assets/event-fallback.jpg';
+import fallbackImg from '/event-fallback.jpg?url';
 
 type ImgWithFallbackType = {} & React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,

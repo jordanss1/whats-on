@@ -29,19 +29,31 @@ export const axiosGetCache = async (
     query = allowedParamKeys.includes(key) ? `?${key}=${filter[key]}` : '';
   }
 
-  const { data } = await api.get(`/events${query}`);
+  try {
+    const { data } = await api.get(`/events${query}`.trim());
 
-  return data;
+    return data;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export const axiosGetCategories = async (): Promise<string[]> => {
-  const { data } = await api.get(`/events/categories`);
+  try {
+    const { data } = await api.get(`/events/categories`);
 
-  return data;
+    return data;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export const axiosGetMonths = async (): Promise<string[]> => {
-  const { data } = await api.get(`/events/months`);
+  try {
+    const { data } = await api.get(`/events/months`);
 
-  return data;
+    return data;
+  } catch (err) {
+    throw err;
+  }
 };
