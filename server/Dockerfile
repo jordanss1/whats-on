@@ -8,7 +8,7 @@ USER root
 
 RUN npm install --production
 
-COPY dist ./dist
+COPY src/dist ./dist
 
 RUN chown node:node -R /app
 
