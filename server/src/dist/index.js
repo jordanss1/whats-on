@@ -21,6 +21,6 @@ app.use('/api/events', events_1.default);
 app.use('/api/events/categories', categories_1.default);
 //retrieve months for select dropdown
 app.use('/api/events/months', months_1.default);
-const PORT = process.env.PORT || 8000;
-process.env.NODE_ENV = 'development';
+const PORT = process.env.PORT || 3000;
+process.env.NODE_ENV = 'production';
 app.listen(PORT);

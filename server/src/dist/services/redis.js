@@ -13,7 +13,7 @@ const client = (0, redis_1.createClient)({
         port: redisPort,
     },
 });
-client.on('error', (err) => console.log('Redis Client Error', err));
+client.on('error', (err) => { });
 async function startRedis() {
     await client.connect();
 }

@@ -6,14 +6,14 @@ COPY package*.json ./
 
 USER root
 
-RUN npm install
+RUN npm install --production
 
-COPY . .
+COPY dist ./dist
 
 RUN chown node:node -R /app
 
 USER node
 
-EXPOSE 8000
+EXPOSE 3000
 
-CMD npm start
+CMD ["node", "dist/index.js"]
