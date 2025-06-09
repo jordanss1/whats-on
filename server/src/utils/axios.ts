@@ -1,5 +1,5 @@
 import axios from 'axios';
-import keys from '../config/dev';
+import keys from '../config/keys';
 
 export const eventsApi = axios.create({
   baseURL: 'https://whatson.motorpointarenanottingham.com/api/challenge',

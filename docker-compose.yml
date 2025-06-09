@@ -21,7 +21,7 @@ services:
 
   whatson-api:
     depends_on:
-      - redis
+      - whatson-redis
     environment: 
       DB_PASS: ${DB_PASS}
       DB_USER: ${DB_USER}
@@ -36,6 +36,8 @@ services:
       - .env
     expose:
       - ${API_PORT}
+    networks:
+      - dokploy-network
 
 
   whatson-redis:
@@ -45,6 +47,8 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    networks:
+      - dokploy-network
 
 networks:
   dokploy-network:

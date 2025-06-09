@@ -28,7 +28,7 @@ app.use('/api/events/categories', categoriesRouter);
 
 app.use('/api/events/months', monthsRouter);
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 process.env.NODE_ENV = 'production';
 
