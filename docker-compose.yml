@@ -31,6 +31,7 @@ services:
       API_KEY: ${API_KEY}
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
+      NODE_ENV: production
     build: ./server
     env_file:
       - .env
