@@ -1,20 +1,13 @@
-FROM node:23-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
+FROM nginxinc/nginx-unprivileged
 
 USER root
 
-RUN npm install
+RUN apt-get update
 
-COPY . .
+USER nginx
 
-RUN chown node:node -R /app
+WORKDIR /usr/share/nginx/html
 
-USER node
-
-EXPOSE 5173
-
-CMD npm run dev
+COPY --chown=nginx:nginx conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY --chown=nginx:nginx dist /usr/share/nginx/html
 

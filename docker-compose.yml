@@ -1,0 +1,51 @@
+services:
+  whatson-web:
+    depends_on:
+      - whatson-api
+    build: ./client
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.whatson-web-app.rule=Host(${WEB})
+      - traefik.http.routers.whatson-web-app.entrypoints=websecure
+      - traefik.http.routers.whatson-web-app.tls.certResolver=letsencrypt
+      - traefik.http.services.whatson-web-app.loadbalancer.server.port=${WEB_PORT}
+    env_file:
+      - .env
+    expose:
+      - ${WEB_PORT}
+    restart: unless-stopped
+    networks:
+      - dokploy-network
+
+  
+
+  whatson-api:
+    depends_on:
+      - redis
+    environment: 
+      DB_PASS: ${DB_PASS}
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      CLIENT_URL: ${CLIENT_URL}
+      HOST: ${HOST}
+      API_KEY: ${API_KEY}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+    build: ./server
+    env_file:
+      - .env
+    expose:
+      - ${API_PORT}
+
+
+  whatson-redis:
+    image: redis:latest
+    expose:
+      - ${REDIS_PORT}
+    restart: unless-stopped
+    env_file:
+      - .env
+
+networks:
+  dokploy-network:
+    external: true
